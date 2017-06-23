@@ -6,6 +6,7 @@ except FileNotFoundError as e:
     print(e)
     sys.exit()
 
+#Create a directory of your choice to hold that particular type of files. Take care for duplicate names.
 try:
     os.mkdir('Music')
     os.mkdir('Videos')
@@ -20,10 +21,11 @@ except FileExistsError as e:
 list_of_files = os.listdir()
 curr_working_dir = os.getcwd()
 
+#Add extensions to the existing lists or add new lists
 music_ext_list = ['mp3']
 videos_ext_list = ['mkv', 'mp4', 'wmv']
 images_ext_list = ['jpg', 'JPG', 'png', 'gif', 'PNG']
-docs_ext_list = ['pdf', 'txt', 'xlsx', 'csv']
+docs_ext_list = ['pdf', 'txt', 'xls', 'docx', 'xlsx', 'csv']
 zips_ext_list = ['zip', 'tgz', 'gz']
 
 for file in list_of_files:
