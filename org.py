@@ -8,8 +8,10 @@ except FileNotFoundError as e:
 
 try:
     os.mkdir('Music')
+    os.mkdir('Videos')
     os.mkdir('Images')
     os.mkdir('Docs')
+    os.mkdir('Zips')
     os.mkdir('Other')
 except FileExistsError as e:
     print(e)
@@ -18,9 +20,11 @@ except FileExistsError as e:
 list_of_files = os.listdir()
 curr_working_dir = os.getcwd()
 
-music_ext_list = ['mp3', 'mp4']
-images_ext_list = ['jpg', 'png', 'gif']
-docs_ext_list = ['pdf', 'txt', 'xlxs']
+music_ext_list = ['mp3']
+videos_ext_list = ['mkv', 'mp4', 'wmv']
+images_ext_list = ['jpg', 'JPG', 'png', 'gif', 'PNG']
+docs_ext_list = ['pdf', 'txt', 'xlsx', 'csv']
+zips_ext_list = ['zip', 'tgz', 'gz']
 
 for file in list_of_files:
 
@@ -28,6 +32,7 @@ for file in list_of_files:
         continue
 
     extension = file.split('.')[-1]
+
     if extension in music_ext_list:
         os.rename(os.getcwd()+'/'+ str(file), os.getcwd()+'/Music/'+str(file))
         print("Moving file '"+ str(file) + "' to Music directory")
@@ -39,6 +44,15 @@ for file in list_of_files:
     elif extension in docs_ext_list:
         os.rename(os.getcwd()+'/'+ str(file), os.getcwd()+'/Docs/'+str(file))
         print("Moving file '"+ str(file) + "' to Docs directory")
+
+    elif extension in zips_ext_list:
+        os.rename(os.getcwd()+'/'+ str(file), os.getcwd()+'/Zips/'+str(file))
+        print("Moving file '"+ str(file) + "' to Zips directory")
+
+    elif extension in videos_ext_list:
+        os.rename(os.getcwd()+'/'+ str(file), os.getcwd()+'/Videos/'+str(file))
+        print("Moving file '"+ str(file) + "' to Videos directory")
+
     else:
         os.rename(os.getcwd()+'/'+ str(file), os.getcwd()+'/Other/'+str(file))
         print("Moving file '"+ str(file) + "' to Other directory")
